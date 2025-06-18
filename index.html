@@ -1,149 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
   <title>Weekly Test</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #fbfbfc;
       color: #0c0c0c;
-      padding: 10px;
-      margin: 0;
-      font-size: 16px;
+      padding: 20px;
     }
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 5px;
-    }
-    h3 {
-      font-size: 1.4rem;
-      margin-top: 20px;
+    h2, h3 {
+      font-size: 2rem;
     }
     #test-area, #result-area {
       display: none;
     }
     .question {
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 10px;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 15px;
+      color: #080808;
       background: #d9e5f7;
+      
+    }
+    .question:hover {
+    
     }
     .options input {
-      margin-right: 8px;
-      transform: scale(1.2);
+      margin-right: 10px;
+      transform: scale(1.3);
     }
     .options label {
-      font-size: 1rem;
+      font-size: 1.3rem;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       cursor: pointer;
     }
     input[type="text"] {
       padding: 10px;
-      width: 100%;
-      font-size: 1rem;
+      width: 60%;
+      font-size: 1.2rem;
       margin-bottom: 10px;
-      box-sizing: border-box;
     }
     button {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
+      padding: 12px 25px;
+      font-size: 1.1rem;
       background: #7491b3;
-      color: #fff;
+      color: #0d0f13;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
     }
     button:hover {
-      background: #576c89;
+      background: #080808;
     }
     .correct {
       color: #09af09;
-      font-weight: bold;
+      font-size: 1.1rem;
     }
     .wrong {
       color: #d30505;
-      font-weight: bold;
-    }
-    @media (min-width: 768px) {
-      body {
-        font-size: 18px;
-        padding: 30px;
-      }
-      input[type="text"] {
-        width: 60%;
-      }
-      button {
-        width: auto;
-      }
-      .options label {
-        font-size: 1.2rem;
-      }
-      .question {
-        padding: 20px;
-      }
+      font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
-  <h2>Weekly Test</h2>
-  <p>18-jun-2025</p>
-  <p>SAUMIT Test-03</p>
+  <h2>Weekly Test</h2><p>18-jun-2025</p>
+  <p>MANVI TEST-03</p>
   <div id="name-area">
     <input type="text" id="username" placeholder="Enter your name">
     <button onclick="startTest()">Start Test</button>
   </div>
+
   <div id="test-area"></div>
   <div id="submit-area" style="display:none;">
     <button onclick="submitTest()">Submit</button>
   </div>
+
   <div id="result-area"></div>
 
   <script>
     const questions = [
-      { q: "What is the sum of 467 and 258?", options: ["715", "725", "735", "745"], correct: 2 },
-      { q: "Subtract 289 from 654. What is the result?", options: ["365", "375", "385", "395"], correct: 0 },
-      { q: "Aman had ₹950. He bought a toy for ₹375. How much money is left with him?", options: ["₹575", "₹585", "₹595", "₹605"], correct: 0 },
-      { q: "What is the result of 999 + 1 – 500?", options: ["500", "499", "501", "600"], correct: 0 },
-      { q: "A basket has 425 apples. If 198 apples are taken out, how many apples are left?", options: ["227", "237", "247", "257"], correct: 0 },
-      { q: "What is 36 × 4?", options: ["124", "134", "144", "154"], correct: 2 },
-      { q: "Divide 225 by 5. What is the quotient?", options: ["45", "50", "55", "60"], correct: 0 },
-      { q: "A packet contains 12 pencils. How many pencils are there in 7 such packets?", options: ["72", "74", "84", "94"], correct: 2 },
-      { q: "If 648 ÷ 9 = ?, then what is the value of ?", options: ["62", "72", "82", "92"], correct: 1 },
-      { q: "A car travels 60 km in 1 hour. How much distance will it cover in 8 hours?", options: ["420 km", "460 km", "480 km", "500 km"], correct: 2 },
-      { q: "What is the LCM of 6 and 8?", options: ["24", "48", "12", "18"], correct: 0 },
-      { q: "What is the HCF of 36 and 60?", options: ["6", "12", "18", "24"], correct: 1 },
-      { q: "Which of the following is a multiple of 9?", options: ["34", "45", "53", "67"], correct: 1 },
-      { q: "Which number is a common factor of both 18 and 27?", options: ["2", "5", "9", "12"], correct: 2 },
-      { q: "What is the smallest even number?", options: ["1", "2", "0", "4"], correct: 2 },
-      { q: "Which of the following is NOT an odd number?", options: ["21", "33", "44", "57"], correct: 2 },
-      { q: "How many factors does the number 12 have?", options: ["4", "5", "6", "7"], correct: 2 },
-      { q: "Which pair of numbers has 1 as their HCF?", options: ["10 and 20", "7 and 15", "9 and 18", "12 and 24"], correct: 1 },
-      { q: "What is the LCM of 5, 10, and 20?", options: ["10", "20", "40", "60"], correct: 1 },
-      { q: "Which of these is an even number and also a factor of 36?", options: ["7", "9", "6", "15"], correct: 2 },
-      { q: "What is 1/2 + 1/4?", options: ["2/6", "2/4", "3/4", "1/6"], correct: 2 },
-      { q: "Which of the following is the smallest fraction?", options: ["3/5", "1/2", "2/3", "1/4"], correct: 3 },
-      { q: "What is 3/4 − 1/2?", options: ["1/2", "1/4", "1/8", "2/4"], correct: 1 },
-      { q: "Which of the following fractions is equal to 0.5?", options: ["1/3", "1/4", "1/2", "2/3"], correct: 2 },
-      { q: "What is the simplified form of 6/9?", options: ["2/3", "3/6", "4/5", "3/9"], correct: 0 },
-      { q: "What is the value of 6 + 2 × 3?", options: ["24", "12", "18", "12"], correct: 1 },
-      { q: "Solve: (8 + 4) ÷ 2", options: ["6", "4", "12", "8"], correct: 0 },
-      { q: "What is the value of 18 ÷ (3 × 3)?", options: ["2", "3", "4", "6"], correct: 0 },
-      { q: "Solve: 20 − [4 + (2 × 3)]", options: ["10", "12", "14", "16"], correct: 0 },
-      { q: "What is the value of 5 + 2 × (10 − 6)?", options: ["13", "17", "20", "26"], correct: 0 },
-      { q: "What is the main product of photosynthesis?", options: ["Oxygen", "Water", "Glucose", "Carbon dioxide"], correct: 2 },
-      { q: "Which gas is used by plants during photosynthesis?", options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"], correct: 2 },
-      { q: "In which part of the plant does photosynthesis mainly occur?", options: ["Roots", "Stem", "Leaves", "Flowers"], correct: 2 },
-      { q: "Which pigment in leaves helps in capturing sunlight?", options: ["Hemoglobin", "Chlorophyll", "Carotene", "Xanthophyll"], correct: 1 },
-      { q: "What is the source of energy for photosynthesis?", options: ["Water", "Soil", "Sunlight", "Air"], correct: 2 },
-      { q: "What is a habitat?", options: ["A type of plant", "The food of an animal", "The natural home of a living organism", "A man-made structure"], correct: 2 },
-      { q: "Which of the following is an example of an aquatic habitat?", options: ["Desert", "Pond", "Forest", "Grassland"], correct: 1 },
-      { q: "Camels are best suited to live in which type of habitat?", options: ["Forest", "Polar region", "Desert", "Wetland"], correct: 2 },
-      { q: "Which habitat is known for very low temperatures and snow-covered land?", options: ["Desert", "Rainforest", "Mountain", "Polar"], correct: 3 },
-      { q: "Which of these is a characteristic of terrestrial habitats?", options: ["Found under water", "Found in air", "Found on land", "Found only in rainforests"], correct: 2 }
-    ];
+  // ✅ Topic 1: BODMAS
+  { q: "(36 ÷ 6) + {(4 × 5) - (2²)} × 2 = ?", options: ["28", "32", "36", "38"], correct: 3 },
+  { q: "(45 - 15) × (3 + 2) ÷ 5 = ?", options: ["15", "20", "30", "35"], correct: 2 },
+  { q: "(100 ÷ 5) - {8 + (3 × 4)} = ?", options: ["8", "12", "16", "0"], correct: 3 },
+  { q: "(60 ÷ 3) × (2²) - 5 = ?", options: ["35", "40", "75", "80"], correct: 2 },
+  { q: "(5³ ÷ 5) + (3²) - (2 × 6) = ?", options: ["13", "15", "17", "22"], correct: 3 },
+
+  // ✅ Topic 2: Divisibility by 2, 4, 8
+  { q: "Which of the following numbers is divisible by 2?", options: ["157", "239", "826", "731"], correct: 2 },
+  { q: "Which number is divisible by 4?", options: ["124", "329", "475", "803"], correct: 0 },
+  { q: "What is the smallest number divisible by 8?", options: ["144", "158", "162", "170"], correct: 0 },
+  { q: "Which number is divisible by both 2 and 4 but not by 8?", options: ["48", "64", "72", "20"], correct: 3 },
+  { q: "Which of the following is not divisible by 8?", options: ["256", "128", "96", "194"], correct: 3 },
+
+  // ✅ Topic 3: Divisibility by 3, 5, 10
+  { q: "Which number is divisible by 5?", options: ["123", "248", "375", "492"], correct: 2 },
+  { q: "Which number is divisible by both 5 and 10?", options: ["650", "275", "515", "345"], correct: 0 },
+  { q: "Which number is divisible by 3?", options: ["432", "721", "857", "913"], correct: 0 },
+  { q: "Which number is divisible by 10?", options: ["420", "523", "735", "319"], correct: 0 },
+  { q: "Which number is divisible by 3 but not by 5?", options: ["120", "135", "81", "90"], correct: 2 },
+
+  // ✅ Topic 4: Divisibility by 9, 11, 7
+  { q: "Which number is divisible by 9?", options: ["729", "713", "802", "655"], correct: 0 },
+  { q: "Which number is divisible by 7?", options: ["189", "160", "234", "305"], correct: 0 },
+  { q: "Which number is divisible by 11?", options: ["121", "125", "143", "132"], correct: 0 },
+  { q: "Which number is divisible by 9 and 3 but not by 11?", options: ["198", "153", "162", "99"], correct: 2 },
+  { q: "Which number is divisible by 11 but not by 9 or 7?", options: ["121", "198", "308", "154"], correct: 2 },
+
+  // ✅ Topic 5: Prime, Composite, Odd, Even
+  { q: "Which of the following is a prime number?", options: ["21", "33", "29", "35"], correct: 2 },
+  { q: "Which number is an even composite number?", options: ["2", "4", "3", "11"], correct: 1 },
+  { q: "Which of these is not a prime number?", options: ["2", "19", "15", "13"], correct: 2 },
+  { q: "Which of the following is an odd number?", options: ["16", "22", "17", "10"], correct: 2 },
+  { q: "How many prime numbers are there between 10 and 20?", options: ["2", "3", "4", "5"], correct: 2 },
+
+  // ✅ Topic 6: Distributive Law
+  { q: "Which of the following shows the distributive law correctly?", options: ["a × (b + c) = ab + c", "a × (b + c) = a + bc", "a × (b + c) = ab + ac", "a × (b + c) = abc"], correct: 2 },
+  { q: "Find the value using the distributive property: 6 × (10 + 5) = ?", options: ["60 + 15", "60 + 10", "65 + 5", "60 + 20"], correct: 0 },
+  { q: "Simplify using distributive law: 7 × (9 - 4) = ?", options: ["63 - 28", "63 - 35", "63 - 21", "63 - 14"], correct: 3 },
+  { q: "Which uses distributive property to solve 8 × 13?", options: ["8 × (10 + 3) = 80 + 8", "8 × (10 + 3) = 80 + 24", "8 × (10 + 3) = 80 + 30", "8 × (10 + 3) = 88"], correct: 1 },
+  { q: "Using distributive law, what is 5 × 47?", options: ["(5 × 40) + (5 × 7)", "(5 × 50) - (5 × 3)", "(5 × 45) + (5 × 2)", "All of the above"], correct: 3 },
+
+  // ✅ Science MCQs
+  { q: "What is a habitat?", options: ["A type of food", "A natural home of an organism", "A plant’s root", "A method of reproduction"], correct: 1 },
+  { q: "Which of the following is a terrestrial habitat?", options: ["Pond", "Ocean", "Desert", "River"], correct: 2 },
+  { q: "Fishes live in which type of habitat?", options: ["Aerial", "Aquatic", "Desert", "Grassland"], correct: 1 },
+  { q: "Camels are suited to desert habitat because:", options: ["They are fast runners", "They eat a lot", "They store water in their bodies", "They live in trees"], correct: 2 },
+  { q: "Which of the following lives in a polar habitat?", options: ["Tiger", "Penguin", "Camel", "Lion"], correct: 1 },
+  { q: "Which part of the plant makes seeds?", options: ["Leaf", "Stem", "Flower", "Root"], correct: 2 },
+  { q: "Which of these is a way of asexual reproduction?", options: ["Cutting", "Pollination", "Fertilization", "Germination"], correct: 0 },
+  { q: "Seeds grow into a new plant by the process of:", options: ["Pollination", "Germination", "Budding", "Layering"], correct: 1 },
+  { q: "Which of the following plants reproduce through seeds?", options: ["Potato", "Rose", "Mango", "Money plant"], correct: 2 },
+  { q: "Which part of the flower contains pollen?", options: ["Stigma", "Ovary", "Anther", "Sepal"], correct: 2 },
+  { q: "How many bones are there in the adult human body?", options: ["300", "206", "100", "260"], correct: 1 },
+  { q: "Which part of the body protects the brain?", options: ["Ribs", "Spine", "Skull", "Pelvis"], correct: 2 },
+  { q: "Bones of the chest that protect the heart and lungs are called:", options: ["Backbone", "Ribs", "Skull", "Limbs"], correct: 1 },
+  { q: "Which bone is also called the backbone?", options: ["Skull", "Pelvis", "Vertebral column", "Femur"], correct: 2 },
+  { q: "Which is the longest bone in the human body?", options: ["Tibia", "Femur", "Humerus", "Radius"], correct: 1 },
+  { q: "Which blood group is known as the universal donor?", options: ["A", "B", "AB", "O"], correct: 3 },
+  { q: "Which blood group is known as the universal recipient?", options: ["AB", "A", "B", "O"], correct: 0 },
+  { q: "Blood group is determined by the presence of:", options: ["Red blood cells", "Antibodies", "Antigens", "Plasma"], correct: 2 },
+  { q: "Which of the following is an insectivorous plant?", options: ["Mango", "Neem", "Venus Flytrap", "Rose"], correct: 2 },
+  { q: "Why do insectivorous plants trap insects?", options: ["For photosynthesis", "For protection", "To get extra nutrients like nitrogen", "To store water"], correct: 2 }
+];
 
     function saveAnswer(qIndex, selected) {
       const saved = JSON.parse(localStorage.getItem('answers') || '{}');
